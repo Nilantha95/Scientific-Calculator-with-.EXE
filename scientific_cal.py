@@ -2,8 +2,8 @@ import tkinter as tk
 import math
 
 root = tk.Tk()
-root.title("Non Scientific Calculator")
-root.geometry("570x790+100+200")
+root.title("Scientific Calculator")
+root.geometry("570x790+500+0")
 root.resizable(False,False)
 root.configure(bg="#17161b")
 
@@ -37,8 +37,19 @@ def calculate():
             equation = ""
         label_result.config(text=result)
         
+def key_press(event):
+    key = event.char
+    if key.isdigit() or key in ".+-*/()^":
+        show(key)
+    elif key in ["\r", "\n"]:
+        calculate()
+    elif key == "c":
+        clear()
+    elif event.keysym == "Escape":
+        clear()
         
-label_result = tk.Label(root,width=25,height=2,text="",font=("arial",30))
+        
+label_result = tk.Label(root,width=30,height=2,text="",font=("arial",25))
 label_result.pack()
 
 tk.Button(root,text="C",width=5, height=1, font=("arial",30,"bold"), bd=1,fg="#fff", bg="#3697f5", command=lambda:clear()).place(x=10,y=100)
@@ -73,5 +84,8 @@ tk.Button(root,text="sqrt",width=5, height=1, font=("arial",30,"bold"), bd=1,fg=
 tk.Button(root,text="(",width=5, height=1, font=("arial",30,"bold"), bd=1,fg="#fff", bg="#2a2d36",command=lambda:show("(")).place(x=150,y=700)
 tk.Button(root,text=")",width=5, height=1, font=("arial",30,"bold"), bd=1,fg="#fff", bg="#2a2d36",command=lambda:show(")")).place(x=290,y=700)
 tk.Button(root,text="^",width=5, height=1, font=("arial",30,"bold"), bd=1,fg="#fff", bg="#2a2d36",command=lambda:show("^")).place(x=430,y=700)
+
+
+root.bind("<Key>", key_press)
 
 root.mainloop()

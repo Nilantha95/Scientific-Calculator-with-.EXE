@@ -24,21 +24,20 @@ def calculate():
     result = ""
     if equation !="":
         try:
-            result=eval(equation)
-        except:
+            
+            equation_mod = equation.replace('^', '**')
+            equation_mod = equation_mod.replace('sin', 'math.sin')
+            equation_mod = equation_mod.replace('cos', 'math.cos')
+            equation_mod = equation_mod.replace('tan', 'math.tan')
+            equation_mod = equation_mod.replace('log', 'math.log')
+            equation_mod = equation_mod.replace('sqrt', 'math.sqrt')
+            result = eval(equation_mod)
+        except Exception as e:
             result="error"
             equation = ""
         label_result.config(text=result)
         
-def create_command(text):
-    if text == 'C':
-        return clear
-    elif text == '=':
-        return calculate
-    else:
-        return lambda: show(f"math.{text}(" if text in ['sin', 'cos', 'tan', 'log', 'sqrt'] else text)
-    
-
+        
 label_result = tk.Label(root,width=25,height=2,text="",font=("arial",30))
 label_result.pack()
 

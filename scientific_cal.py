@@ -4,7 +4,7 @@ import math
 root = tk.Tk()
 root.title("Scientific Calculator")
 root.geometry("570x790+500+0")
-root.resizable(True,True)
+root.resizable(False,False)
 root.configure(bg="#17161b")
 
 equation = ""

@@ -4,7 +4,7 @@ import math
 root = tk.Tk()
 root.title("Scientific Calculator")
 root.geometry("570x790+500+0")
-root.resizable(False,False)
+root.resizable(True,True)
 root.configure(bg="#17161b")
 
 equation = ""
@@ -47,6 +47,11 @@ def key_press(event):
         clear()
     elif event.keysym == "Escape":
         clear()
+
+def handle_backspace(event):
+    global equation
+    equation = equation[:-1]
+    label_result.config(text=equation)
         
         
 label_result = tk.Label(root,width=30,height=2,text="",font=("arial",25))
@@ -87,5 +92,6 @@ tk.Button(root,text="^",width=5, height=1, font=("arial",30,"bold"), bd=1,fg="#f
 
 
 root.bind("<Key>", key_press)
+root.bind("<BackSpace>", handle_backspace)
 
 root.mainloop()

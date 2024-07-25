@@ -52,7 +52,11 @@ def handle_backspace(event):
     equation = equation[:-1]
     label_result.config(text=equation)
 
-label_result = tk.Label(root, width=25, height=2, text="", font=("arial", 20))
+frame = tk.Frame(root, bd=2, relief="solid")
+frame.pack(pady=10)
+
+label_result = tk.Label(root, width=23, height=0, text="", font=("arial", 20))
+label_result.pack(pady=(0, 50))
 label_result.pack()
 
 button_font = ("arial", 20, "bold")

@@ -3,7 +3,7 @@ import math
 
 root = tk.Tk()
 root.title("Scientific Calculator")
-root.geometry("400x650+500+0")
+root.geometry("400x650+550+100")
 root.resizable(False, False)
 root.configure(bg="#17161b")
 

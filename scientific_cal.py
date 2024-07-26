@@ -38,7 +38,7 @@ def calculate():
 
 def key_press(event):
     key = event.char
-    if key.isdigit() or key in ".+-*/()^":
+    if key.isdigit() or key in ".+-*/()^%":
         show(key)
     elif key in ["\r", "\n"]:
         calculate()
